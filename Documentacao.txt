@@ -1,0 +1,64 @@
+# Documentação Técnica para Aplicação de Automação em Python usando Tkinter e PyAutoGUI
+
+## Visão Geral
+Esta aplicação em Python foi projetada para automatizar tarefas em um computador, registrando e executando ações do mouse e do teclado. Ela utiliza a biblioteca Tkinter para a interface gráfica (GUI) e o PyAutoGUI para simular ações do mouse e do teclado. A aplicação permite aos usuários criar uma sequência de ações, especificando coordenadas, comentários, ações (clique, Enter ou digitação) e atrasos opcionais.
+
+## Estrutura da Aplicação
+
+A aplicação é composta pelos seguintes componentes principais:
+
+### 1. Importação de Bibliotecas Necessárias
+- `tkinter`: A biblioteca GUI usada para criar a interface gráfica.
+- `pyautogui`: Uma biblioteca para simular ações do mouse e do teclado.
+- `time`: Uma biblioteca Python para adicionar atrasos de tempo.
+
+### 2. Variáveis Globais
+- `entries`: Uma lista para armazenar as entradas de ações definidas pelo usuário.
+- `mouse_x` e `mouse_y`: Variáveis globais para armazenar as coordenadas atuais do cursor do mouse.
+
+### 3. Funções
+
+#### `get_mouse_position()`
+- Esta função atualiza continuamente as variáveis `mouse_x` e `mouse_y` com as coordenadas atuais do cursor do mouse.
+- Ela também atualiza um rótulo na GUI para exibir as coordenadas atuais.
+- Esta função é chamada periodicamente usando `root.after()`.
+
+#### `save_mouse_position(event)`
+- Esta função é chamada quando uma tecla é pressionada em um campo de entrada.
+- Se a tecla for '0', ela salva as coordenadas atuais do mouse no campo de entrada.
+
+#### `executar_acao()`
+- Esta função itera pelas entradas criadas pelo usuário.
+- Para cada entrada, ela extrai as coordenadas X e Y, comentários, ação selecionada (clique, Enter ou digitação) e um atraso opcional.
+- Ela simula a ação especificada usando o PyAutoGUI, incluindo mover o cursor do mouse, clicar, pressionar 'Enter' ou digitar texto.
+- Também pode introduzir um atraso de tempo se especificado na entrada.
+
+#### `adicionar_campos()`
+- Esta função cria um novo conjunto de campos de entrada para permitir ao usuário definir uma nova entrada de ação.
+- Os campos de entrada incluem coordenadas X e Y, um comentário, um botão de rádio para selecionar um tipo de ação (clique, Enter ou digitação) e um campo de entrada opcional para o tempo.
+- A função `save_mouse_position()` é vinculada a este campo de entrada para permitir ao usuário capturar as coordenadas do mouse.
+
+### 4. Configuração da GUI
+- A GUI Tkinter é criada com rótulos, botões e campos de entrada.
+- O botão "Adicionar Campos" permite ao usuário adicionar novas entradas de ação.
+- O rótulo "Coordenadas" exibe as coordenadas atuais do mouse.
+- O botão "Executar" aciona a execução das ações registradas.
+
+### 5. Loop Principal
+- A aplicação entra no loop principal de eventos usando `root.mainloop()`.
+
+## Utilização
+1. Execute o script Python.
+2. Use o botão "Adicionar Campos" para adicionar novas entradas de ação.
+3. Defina as coordenadas X e Y para a ação, adicione um comentário opcional, selecione um tipo de ação (clique, Enter ou digitação) e especifique um atraso de tempo opcional.
+4. Clique no botão "Executar" para executar as ações registradas.
+
+## Observações
+- A aplicação atualiza continuamente as coordenadas do cursor do mouse e permite capturar essas coordenadas pressionando '0' no campo de entrada de tempo.
+- O campo "Tempo (s)" pode ser usado para introduzir atrasos de tempo na execução das ações.
+- Certifique-se de que o PyAutoGUI e o Tkinter estejam instalados em seu ambiente Python para executar a aplicação.
+
+## Aviso
+Esta aplicação é destinada a fins educacionais e demonstrativos. Tenha cuidado ao automatizar tarefas, pois ações não intencionais podem causar problemas. Use a automação de forma responsável e ética.
+
+Autor: REGY ROBSON DA SILVA FELIPE
